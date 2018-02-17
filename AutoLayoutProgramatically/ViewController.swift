@@ -9,17 +9,140 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    let bearImageView: UIImageView = {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "bear_first"))
+        //ez bekapcsolja az autolayoutot az imagnek
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    let descriptionTextView: UITextView = {
+        let textView = UITextView()
+        
+        let attributedText = NSMutableAttributedString(string: "Join us today in out fun and games!", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
+        attributedText.append(NSAttributedString(string: "\n\n\nAre you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon.", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13),
+                                                                                                                                                                                       NSAttributedStringKey.foregroundColor: UIColor.gray]))
+        textView.attributedText = attributedText
+        //        textView.text = "Join us today in out fun and games!"
+        //        textView.font = UIFont.boldSystemFont(ofSize: 17)
+        textView.textAlignment = .center
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.isEditable = false
+        textView.isScrollEnabled = false
+        return textView
+    }()
+    
+    private let previousButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("PREV", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.gray, for: .normal)
+        return button
+    }()
+    
+    private let nextButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("NEXT", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(UIColor.mainPink, for: .normal)
+        return button
+    }()
+    
+    private let pageControl: UIPageControl = {
+        let pc = UIPageControl()
+        pc.currentPage = 0
+        pc.numberOfPages = 4
+        pc.currentPageIndicatorTintColor = UIColor.mainPink
+        pc.pageIndicatorTintColor = .gray
+        return pc
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // view.addSubview(bearImageView)
+        view.addSubview(descriptionTextView)
+        
+        setupButtonControls()
+        setupLayout()
+        
     }
+    
+    fileprivate func setupButtonControls(){
+        //view.addSubview(previousButton)
+      //  previousButton.backgroundColor = .red
+        
+//        let yellowView = UIView()
+//        yellowView.backgroundColor = .yellow
+        
+//        let greenView = UIView()
+//        greenView.backgroundColor = .green
+        
+//        let blueView = UIView()
+//        blueView.backgroundColor = .blue
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        let bottomControlsStackView = UIStackView(arrangedSubviews: [previousButton,
+                                                                     pageControl,
+                                                                     nextButton])
+        
+        bottomControlsStackView.distribution = .fillEqually
+        bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
+        //bottomControlsStackView.axis = .vertical
+        view.addSubview(bottomControlsStackView)
+        
+        NSLayoutConstraint.activate([
+            bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            //previousButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
+            ])
+        //previousButton.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
     }
-
-
+    
+    private func setupLayout(){
+        
+        let topImageContainerView = UIView()
+        // topImageContainerView.backgroundColor = .blue
+        view.addSubview(topImageContainerView)
+        //topImageContainerView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        topImageContainerView.translatesAutoresizingMaskIntoConstraints = false
+        topImageContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
+        topImageContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        //nyelvezet miatt van ami fordítva van
+        topImageContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        topImageContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        topImageContainerView.addSubview(bearImageView)
+        bearImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor).isActive = true
+        bearImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor).isActive = true
+        //  bearImageView.heightAnchor.constraint(equalToConstant: 200)
+        bearImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.5).isActive = true
+        
+        //        topImageContainerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        //        topImageContainerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        //
+        
+        
+        //        bearImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        //        //imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true középre
+        //        //top viewtól 100-ra le
+        //        bearImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        //        bearImageView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        //        bearImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        
+        descriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor).isActive = true
+        descriptionTextView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 24).isActive = true
+        descriptionTextView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -24).isActive = true
+        descriptionTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+    }
+    
+}
+extension UIColor{
+    static var mainPink = #colorLiteral(red: 0.910117209, green: 0.2823070884, blue: 0.5539626479, alpha: 1)
 }
 
