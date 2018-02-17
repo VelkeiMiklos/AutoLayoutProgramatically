@@ -15,6 +15,7 @@
 		F554601C203835BC00A25087 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F554601A203835BC00A25087 /* LaunchScreen.storyboard */; };
 		F554602420386B2200A25087 /* SwipingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554602320386B2200A25087 /* SwipingController.swift */; };
 		F5546026203870E900A25087 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5546025203870E900A25087 /* PageCell.swift */; };
+		F5546028203877FA00A25087 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5546027203877FA00A25087 /* Page.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F554601D203835BC00A25087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F554602320386B2200A25087 /* SwipingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingController.swift; sourceTree = "<group>"; };
 		F5546025203870E900A25087 /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
+		F5546027203877FA00A25087 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				F5546015203835BC00A25087 /* AutoLayoutProgramatically.xcdatamodeld */,
 				F554602320386B2200A25087 /* SwipingController.swift */,
 				F5546025203870E900A25087 /* PageCell.swift */,
+				F5546027203877FA00A25087 /* Page.swift */,
 			);
 			path = AutoLayoutProgramatically;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			files = (
 				F5546011203835BC00A25087 /* ViewController.swift in Sources */,
 				F5546026203870E900A25087 /* PageCell.swift in Sources */,
+				F5546028203877FA00A25087 /* Page.swift in Sources */,
 				F5546017203835BC00A25087 /* AutoLayoutProgramatically.xcdatamodeld in Sources */,
 				F554600F203835BC00A25087 /* AppDelegate.swift in Sources */,
 				F554602420386B2200A25087 /* SwipingController.swift in Sources */,
